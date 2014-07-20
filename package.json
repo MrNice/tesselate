@@ -1,6 +1,6 @@
 {
   "name": "tesselate",
-  "version": "0.0.0",
+  "version": "0.0.0a",
   "description": "Easy loading of tessel modules",
   "main": "tesselate.js",
   "scripts": {
@@ -20,10 +20,14 @@
     "loader",
     "plugins"
   ],
-  "author": "Nicholas Van de walle & Rohan Pethiyagoda",
+  "author": "Nicholas Van de walle && Rohan Pethiyagoda",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MrNice/tesselate/issues"
   },
-  "homepage": "https://github.com/MrNice/tesselate"
+  "homepage": "https://github.com/MrNice/tesselate",
+  "devDependencies": {
+    "accel-mma84": "^0.2.3",
+    "ble-ble113a": "^0.1.9"
+  }
 }
