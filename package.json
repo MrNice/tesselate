@@ -1,10 +1,10 @@
 {
   "name": "tesselate",
-  "version": "0.0.0a",
-  "description": "Easy loading of tessel modules",
+  "version": "0.0.1",
+  "description": "Easily load tessel modules — without .ready()",
   "main": "tesselate.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tessel run test.js"
   },
   "repository": {
     "type": "git",
@@ -14,13 +14,19 @@
     "tessel",
     "node",
     "bots",
-    "johnny",
-    "five",
     "module",
     "loader",
-    "plugins"
+    "plugins",
+    "tessellate"
   ],
-  "author": "Nicholas Van de walle && Rohan Pethiyagoda",
+  "contributors": [{
+    "name": "Nicholas van de walle",
+    "email": "nicholas@niceguys.co",
+    "url": "http://niceguys.co"
+  }, {
+    "name": "Rohan Pethiyagoda",
+    "email": "sarith21@gmail.com"
+  }],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MrNice/tesselate/issues"
