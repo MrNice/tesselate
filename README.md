@@ -65,6 +65,7 @@ require('tesselate')(['accel-mma84', 'ble-ble113a'], function(tessel, m) {
     relay-mono | relay
     rfid-pn532 | rfid
     servo-pca9685 | servo
+    
 ### For newbies
 * In your terminal / command line
   * Navigate to your project folder
@@ -94,6 +95,12 @@ The optionsObject should be an object literal of the form:
 
 }
 ````
+Alternatively, if using shortcut syntax, the optionsObject can be an array in the following form. If using this syntax, modules MUST be plugged into ports in order (e.g., ports A and B MUST be used before port C or D). 
+
+````
+[‘accel-mma84’, ‘ir-attx4’]
+````
+
 yourCode is an anonymous function that is passed m, an object with your modules loaded as properties with the names you gave them and the 'tessel' module, which was required for you. It is invoked for you as soon as all modules report that they're ready. If you require other modules before requiring and calling tesselate, they will be available to you in the callback function as well, as they are preserved in the callback's closure scope.
 
 ````
