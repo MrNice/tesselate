@@ -81,3 +81,7 @@ function run(tessel, m){
   //your code here.
 }
 ````
+
+### Known possible improvements
+* Use ES6 generators to remove the need for a callback
+  * Tessel runtime does not have generators built in

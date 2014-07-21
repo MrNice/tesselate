@@ -25,7 +25,7 @@ var tesselate = function(config, callback) {
       loadedModules[alias].on('ready', function() {
         devLog(capitalize(config.modules[tesselPort][1]) + ' is ready.');
 
-        // If no more modules to load 
+        // If no more modules to load, call the callback
         if (!--readyModules) callback(tessel, loadedModules);
       });
     }
