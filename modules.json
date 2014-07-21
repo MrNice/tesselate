@@ -1,0 +1,17 @@
+{
+    "ble-ble113a": "ble",
+    "accel-mma84": "accel",
+    "ambient-attx4": "ambient",
+    "audio-vs1053b": "audio",
+    "camera-vc0706": "camera",
+    "climate-si7005": "climate",
+    "climate-si7020": "climate",
+    "gprs-sim900": "gprs",
+    "gps-a2235h": "gps",
+    "ir-attx4": "infrared",
+    "sdcard": "sdcard",
+    "rf-nrf24": "nrf",
+    "relay-mono": "relay",
+    "rfid-pn532": "rfid",
+    "servo-pca9685": "servo"
+}
