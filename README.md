@@ -3,26 +3,28 @@ tesselate
 
 ### Easy tessel module loading
 
-tesselate is a dependency injector for tessel modules, abstracting away the need to nest multiple ‘ready’ listeners and callbacks within each other, or use promises or generators (or even ~~shudders~~ to create multiple internal loaded flags). 
+tesselate is a dependency injector for tessel modules, abstracting away the need to nest multiple ‘ready’ listeners and callbacks within each other, or use promises or generators (or multiple, internal loaded flags). 
 
-tesselate requires ‘tessel’ for you so you don’t have to. Your code exists as a callback to the the invocation of the tesselate function. 
+tesselate requires ‘tessel’ for you so you don’t have to. Your code exists as a callback to the the invocation of the tesselate function. Obviously, you must have globally npm installed tessel. 
 
 ### Features
 * Ensures that all modules are loaded before your code runs
 * Small library footprint size — only 11kb once packaged
+* Shortcut sytax allows you to just list the modules you want in an array
 * Has no external dependencies
 * Development flag useful for debugging
 
 ### Quickstart
+Require tesselate and invoke it, passing in a config object and your code, as a callback. 
 
 ````
 // Load and immediately run tesselate module
 require(‘tesselate’)({
   modules: {
     A: [‘accel-mma84’, ‘accel’], // load accelerometer module, aliased as ‘accel’ on port A
-    B: [‘ir-attx4’, ‘ir’] // load IR module, aliased as ‘ir’ on port B
+    B: [‘ir-attx4’, ‘ir’]        // load IR module, aliased as ‘ir’ on port B
   },
-  development: true // enable development logging, useful for debugging
+  development: true              // enable development logging, useful for debugging
 }, function(tessel, m){
 
   // returns tessel to you as 'tessel'
@@ -33,6 +35,36 @@ require(‘tesselate’)({
   //your code here
 });
 ````
+### Shortcut syntax
+Instead of a config object, just pass in an array with the names of the npm modules of the modules you want, ordered by port. So for ports A, B, C and D, pass in [moduleA, moduleB, moduleC, moduleD], respectively. 
+
+````
+/* if accel and ble were plugged into ports A and B, respectively... */
+require('tesselate')(['accel-mma84', 'ble-ble113a'], function(tessel, m) {
+  //refer to each module by its prefix
+  //i.e., refer to accel module as m.accel, or ble module as m.ble
+  //your code here
+});
+````
+
+#### Shortcut syntax supported modules
+    module name | given alias
+    ----------- | ------------
+    ble-ble113a | ble
+    accel-mma84 | accel
+    ambient-attx4 | ambient
+    audio-vs1053b | audio
+    camera-vc0706 | camera
+    climate-si7005 | climate
+    climate-si7020 | climate
+    gprs-sim900 | gprs
+    gps-a2235h | gps
+    ir-attx4 | infrared
+    sdcard | sdcard
+    rf-nrf24 | nrf
+    relay-mono | relay
+    rfid-pn532 | rfid
+    servo-pca9685 | servo
 ### For newbies
 * In your terminal / command line
   * Navigate to your project folder
@@ -68,18 +100,6 @@ yourCode is an anonymous function that is passed m, an object with your modules 
 tesselate(optionsObject, function(tessel, m){
   //your code here, referring to tessel as tessel and your modules as m.yourGivenModuleName
 });
-````
-
-### Getting fancy
-
-Use hoisted functions to write even less and look posh, all while having your ready functions taken care of. 
-````
-require('tesselate')({
-}, run);
-
-function run(tessel, m){
-  //your code here.
-}
 ````
 
 ### Known possible improvements
