@@ -3,30 +3,34 @@ tesselate
 
 ### Easy tessel module loading
 
-tesselate is a dependency injector for tessel modules, abstracting away the need to nest multiple ‘ready’ listeners and callbacks within each other, or use promises or generators. 
+tesselate is a dependency injector for tessel modules, abstracting away the need to nest multiple ‘ready’ listeners and callbacks within each other, or use promises or generators (or even ~~shudders~~ to create multiple internal loaded flags). 
 
-tesselate requires ‘tessel’ for you so you don’t have to. Your code exists as a callback to the the invokation of the tesselate function. 
+tesselate requires ‘tessel’ for you so you don’t have to. Your code exists as a callback to the the invocation of the tesselate function. 
 
+### Features
+* Ensures that all modules are loaded before your code runs
+* Small library footprint size — only 11kb once packaged
+* Has no external dependencies
+* Development flag useful for debugging
 
 ### Quickstart
 
 ````
-var tesselate = require(‘tesselate’); //loads tesselation module
-
-tesselate({
+// Load and immediately run tesselate module
+require(‘tesselate’)({
   modules: {
-    A: [‘accel-mma84’, ‘accel’], //loads accelerometer module, aliased as ‘accel’ on port A
-    B: [‘ir-attx4’, ‘ir’] //loads IR module, aliased as ‘ir’ on port B
-  }
+    A: [‘accel-mma84’, ‘accel’], // load accelerometer module, aliased as ‘accel’ on port A
+    B: [‘ir-attx4’, ‘ir’] // load IR module, aliased as ‘ir’ on port B
+  },
+  development: true // enable development logging, useful for debugging
 }, function(tessel, m){
 
-//returns your modules to you as properties of object m
-//refer to the IR module as m.ir, or the accelerometer module as m.accel
+  // returns tessel to you as 'tessel'
 
-//returns tessel to you as 'tessel'. 
+  // returns your modules to you as properties of object m
+  // refer to the IR module as m.ir, or the accelerometer module as m.accel
 
-//your code here
-
+  //your code here
 });
 ````
 ### For newbies
@@ -54,11 +58,12 @@ The optionsObject should be an object literal of the form:
     B: [‘ir-attx4’, ‘ir’],
   },
   
-  development: true //Optional. True by default. Set to false to deactivate debugging logs
+  development: true // Optional. True by default. Set to false to deactivate debugging logs
 
 }
 ````
-yourCode is an anonymous function that is passed m, an object with your modules loaded as properties with the names you gave them and the 'tessel' module, which was required for you. It is invoked for you as soon as all modules report that they're ready. 
+yourCode is an anonymous function that is passed m, an object with your modules loaded as properties with the names you gave them and the 'tessel' module, which was required for you. It is invoked for you as soon as all modules report that they're ready. If you require other modules before requiring and calling tesselate, they will be available to you in the callback function as well, as they are preserved in the callback's closure scope.
+
 ````
 tesselate(optionsObject, function(tessel, m){
   //your code here, referring to tessel as tessel and your modules as m.yourGivenModuleName
