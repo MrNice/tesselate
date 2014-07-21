@@ -1,6 +1,6 @@
 {
   "name": "tesselate",
-  "version": "0.0.1b",
+  "version": "0.0.2",
   "description": "Easily load tessel modules — without .ready()",
   "main": "tesselate.js",
   "scripts": {
