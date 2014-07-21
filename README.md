@@ -85,3 +85,7 @@ function run(tessel, m){
 ### Known possible improvements
 * Use ES6 generators to remove the need for a callback
   * Tessel runtime does not have generators built in
+
+### Refused 'improvements'
+* Catching module loading errors inside the loader, passing to callback
+  * You probably want to know if your module fails to load, and not hush it up.
