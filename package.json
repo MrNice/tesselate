@@ -19,15 +19,18 @@
     "plugins",
     "tessellate"
   ],
-  "contributors": [{
-    "name": "Nicholas van de walle",
-    "email": "nicholas@niceguys.co",
-    "url": "http://niceguys.co"
-  }, {
-    "name": "Rohan Pethiyagoda",
-    "email": "sarith21@gmail.com",
-    "url": "http://suchisthepowerofjs.com"
-  }],
+  "contributors": [
+    {
+      "name": "Nicholas van de walle",
+      "email": "nicholas@niceguys.co",
+      "url": "http://niceguys.co"
+    },
+    {
+      "name": "Rohan Pethiyagoda",
+      "email": "sarith21@gmail.com",
+      "url": "http://suchisthepowerofjs.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MrNice/tesselate/issues"
