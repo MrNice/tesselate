@@ -17,6 +17,7 @@ var tesselate = function(config, callback) {
 
   if (Object.keys(config.modules).length) {
     for (var tesselPort in config.modules) {
+      if (tesselPort = 'E') break;
       module = config.modules[tesselPort][0];
       alias = config.modules[tesselPort][1];
 
@@ -29,17 +30,18 @@ var tesselate = function(config, callback) {
       loadedModules[alias].on('ready', function() {
         devLog(capitalize(config.modules[tesselPort][1]) + ' is ready.');
         // If no more modules to load, call the callback
-        if (!--readyModules) callback(tessel, loadedModules);
+        if (!--readyModules) {
+          callback.length === 1 ? callback(loadedModules) : callback(tessel, loadedModules);
+        }
       });
     }
   } else {
     devLog('No modules to load, continuing...');
-    callback(tessel, {});
+    callback.length === 1 ? callback({}) : callback(tessel, {});
   }
 
   // Purposeful hoisting
   function devLog(string) {
-    // Double equals required for truthiness
     if (config.development) console.log(string);
   }
 };
