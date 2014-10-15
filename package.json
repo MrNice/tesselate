@@ -1,8 +1,8 @@
 {
   "name": "tesselate",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Easily load tessel modules — without .ready()",
-  "main": "tesselate.js",
+  "main": "tsl8.js",
   "scripts": {
     "test": "tessel run test.js"
   },
@@ -34,6 +34,10 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MrNice/tesselate/issues"
+  },
+  "hardware": {
+    "./tsl8.js": true,
+    "./modules.json": true
   },
   "homepage": "https://github.com/MrNice/tesselate",
   "devDependencies": {
